@@ -21,11 +21,11 @@ export const fakeUsers = [
     },
     {
         firstName: "James",
-        lastName: "",
-        username: "",
-        password: "",
-        email: "",
-        phone: ,
+        lastName: "Ortega",
+        username: "OrtegaIce",
+        password: "0rtegaM4n.",
+        email: "J.Ortega@usenet.org",
+        phone: 4651239856,
     },
     {
         firstName: "Ian",
