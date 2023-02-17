@@ -1,4 +1,4 @@
-const client = require('/index');
+const client = require('./index');
 const bcrypt = require('bcrypt');
 
 // userData is an object
