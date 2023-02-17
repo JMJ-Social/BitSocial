@@ -1,9 +1,9 @@
-
+import React, { useState } from "react";
+import {RegLog} from './components/exports'
 const App = () => {
+    const [token, setToken] = useState('')
     return (
-        <div>
-            <p>Sup Peeps.</p>
-        </div>
+     <RegLog />
     )
 }
 export default App;
