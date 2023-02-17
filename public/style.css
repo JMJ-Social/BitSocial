@@ -29,3 +29,18 @@ nav{
 #body{
     display: flex;
 }
+.single-post{
+    box-shadow: 1px 2px 2px grey;
+    padding: 5px;
+}
+.post-title{
+    font-size: 15px;
+}
+.post-content{
+    font-size: 18px;
+}
+.bottom-post{
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+}
