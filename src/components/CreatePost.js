@@ -13,8 +13,8 @@ const CreatePost = () => {
         <form id='post-form' onSubmit={handleCreatePost}>
             <p>Name</p>
             <input type='text' value={title} placeholder='Title' required onChange={(e) => setTitle(e.target.value)}></input>
-            <input type='text' value={post_content} placeholder='content' required onChange={e => setPostContent(e.target.value)}></input>
-            <button type="submit">Post</button>
+            <input type='text' value={post_content} placeholder='Content' required onChange={e => setPostContent(e.target.value)}></input>
+            <button className="post-button" type="submit">Post</button>
         </form>
     )
 }
