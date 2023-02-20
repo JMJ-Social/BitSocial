@@ -1,7 +1,20 @@
+import { fetchAllPosts } from "../api";
+import { useState, useEffect } from "react";
+import SinglePost from "./SinglePost";
 const Posts = () => {
+    const [posts, setPosts] = useState([])
+    const gettingAllPosts = async () => {
+        const allPosts = await fetchAllPosts()
+        setPosts(allPosts)
+    }
+    useEffect(() => {
+        gettingAllPosts()
+    }, [])
     return (
-        <div>
-            <p>I'm a bunch of random posts that everyone can see</p>
+        <div id='posts-container'>
+            {posts.map((post, index) => {
+                return <SinglePost key={index} post={post}/>
+            })}
         </div>
     )
 }
