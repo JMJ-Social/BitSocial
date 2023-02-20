@@ -5,7 +5,6 @@ const {createPost, getAllPosts} = require('../db/posts')
 postsRouter.get('/', async (req, res, next) => {
     try{
         const posts = await getAllPosts()
-        console.log(posts)
         res.send(posts)
     }catch(error){
         throw error

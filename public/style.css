@@ -29,7 +29,11 @@ nav{
 #body{
     display: flex;
 }
-.single-post{
+#post-form{
+    display: flex;
+    flex-direction: column;
+}
+.single-post, #post-form{
     box-shadow: 1px 2px 2px grey;
     padding: 5px;
 }
