@@ -10,3 +10,24 @@ export async function fetchAllPosts(){
         throw error
     }
 }
+export async function addPost(postToBeCreated){
+    try{
+        const { title, post_author_id, post_content }  = postToBeCreated
+    const response = await fetchAllPosts(`${REACT_APP_BASE_URL}/posts`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title,
+            post_author_id,
+            post_content
+        })
+    })
+    result = response.json()
+    return result
+    }catch(error){
+        console.error('Error in sending post request to create a post')
+        throw error
+    }
+}

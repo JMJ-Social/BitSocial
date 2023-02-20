@@ -11,5 +11,15 @@ postsRouter.get('/', async (req, res, next) => {
         throw error
     }
 })
+postsRouter.post('/', async (req, res, next) => {
+    try{
+        const { title, post_author_id, post_content }  = req.body
+        const post_timestamp = new Date()
+        const newPost = await createPost({title, post_author_id, post_content, post_timestamp})
+        res.send(newPost)
+    }catch(error){
+        throw error;
+    }
+})
 
 module.exports = postsRouter;
