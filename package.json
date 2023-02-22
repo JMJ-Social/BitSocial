@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "db:build": "node db/seed.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
