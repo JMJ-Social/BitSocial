@@ -21,12 +21,16 @@ usersRouter.post('/register', async (req, res, next) => {
 usersRouter.post('/login', async (req, res, next) => {
     try{
         const { username, password } = req.body
+        console.log(username, 'password', password)
         if(await verifyUser(username, password)){
             const user = await getUserByUsername(username)
             const token = jwt.sign(user, process.env.JWT_SECRET, {
                 expiresIn: '1w'
             })
-            res.send(token)
+            res.send({
+                message: 'Login successful',
+                token
+            })
         }
         else{
             res.status(401).send({

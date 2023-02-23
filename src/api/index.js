@@ -58,7 +58,7 @@ export async function addUser(userInfo){
 }
 export async function loginUser(username, password){
     try{
-        const response  = await fetch(`${REACT_APP_BASE_URL}/users/login` {
+        const response  = await fetch(`${REACT_APP_BASE_URL}/users/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

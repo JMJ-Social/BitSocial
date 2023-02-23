@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Bitter from '../images/Bitter.png'
-import { addUser } from "../api";
+import { addUser, loginUser } from "../api";
 
-const RegLog = () => {
+const RegLog = ({setToken}) => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -18,6 +18,8 @@ const RegLog = () => {
     }
     const handleLogin = async(e) => {
         e.preventDefault()
+        const token = await loginUser(email, password)
+        setToken(token.token)
         setErroMessage("The username or password you entered is incorrect!")
     }
     return (

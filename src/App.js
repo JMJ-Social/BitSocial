@@ -14,7 +14,7 @@ const App = () => {
     return (
         <>
         <Routes>
-        <Route path='/loginRegister' element={<RegLog />}/>
+        <Route path='/loginRegister' element={<RegLog setToken={setToken}/>}/>
         </Routes>
         
         <div>
