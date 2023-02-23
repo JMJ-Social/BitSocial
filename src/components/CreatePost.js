@@ -7,7 +7,8 @@ const CreatePost = () => {
     const handleCreatePost = async (e) => {
         e.preventDefault()
         const newPost = await addPost({title, post_author_id: 1, post_content})
-        console.log('newPost', newPost)
+        setTitle('')
+        setPostContent('')
     }
     return (
         <form id='post-form' onSubmit={handleCreatePost}>
