@@ -24,7 +24,8 @@ const insertUser = async (userData) => {
 const getUserById = async (userId) => {
     try {
         const {rows: [user]} = await client.query(`
-        SELECT user.username, user.password, user.email_address, user.phone_number, user.first_name, user.last_name
+        SELECT username, password, email_address, phone_number, first_name, last_name
+        FROM users
         WHERE id = $1
         ;
         `, [userId]);
@@ -38,13 +39,14 @@ const getUserById = async (userId) => {
 const getUserByUsername = async (username) => {
     try {
         const {rows: [user]} = await client.query(`
-        SELECT user.username, user.password, user.email_address, user.phone_number, user.first_name, user.last_name
+        SELECT username, password, email_address, phone_number, first_name, last_name
+        FROM users
         WHERE username = $1
         ;
         `, [username]);
         return user;
     } catch (error) {
-        console.error('error in getUserById in the database');
+        console.error('error in getUserByUsername in the database');
         throw error;
     }
 };

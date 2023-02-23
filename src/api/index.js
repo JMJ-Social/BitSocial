@@ -35,7 +35,7 @@ export async function addUser(userInfo){
     const { firstName, lastName, username, password, email} = userInfo
     const phone = 1234
     try{
-        const response = await fetch(`${REACT_APP_BASE_URL}/users`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
