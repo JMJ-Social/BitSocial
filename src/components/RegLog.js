@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-
 import Bitter from '../images/Bitter.png'
+import { addUser } from "../api";
 
 const RegLog = () => {
     const [email, setEmail] = useState('')
@@ -13,12 +13,12 @@ const RegLog = () => {
     const [errorMessage, setErroMessage] = useState('')
     const handleRegister = async(e) => {
         e.preventDefault()
+        await addUser({ firstName, lastName, username, password, email })
         setErroMessage("The username or password you entered is incorrect!")
     }
     const handleLogin = async(e) => {
         e.preventDefault()
         setErroMessage("The username or password you entered is incorrect!")
-        console.log(email, password)
     }
     return (
         <div className="regLogPage">
