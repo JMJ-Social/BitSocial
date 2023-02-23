@@ -1,7 +1,22 @@
-import { Routes, Route } from "react-router-dom";
-import { Home, Profile, Messages, Posts, NavBar } from "./components";
+
+import { useEffect, useState} from "react";
+import { Routes, Route, useNavigate} from "react-router-dom";
+import { Home, Profile, Messages, Posts, NavBar,RegLog} from "./components";
+
 const App = () => {
+    const [token, setToken] = useState('')
+    const navigate = useNavigate()
+    useEffect(() => {
+        // if(!token) {
+        //     navigate('/loginRegister')
+        // }
+    }, [token])
     return (
+        <>
+        <Routes>
+        <Route path='/loginRegister' element={<RegLog />}/>
+        </Routes>
+        
         <div>
             <Home />
             <div id='body'>
@@ -13,6 +28,7 @@ const App = () => {
             </Routes>
             </div>
         </div>
+    </>
     )
 }
 export default App;
