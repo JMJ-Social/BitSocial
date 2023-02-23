@@ -56,3 +56,21 @@ export async function addUser(userInfo){
         throw error
     }
 }
+export async function loginUser(username, password){
+    try{
+        const response  = await fetch(`${REACT_APP_BASE_URL}/users/login` {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        })
+        const result = await response.json()
+        return result
+    }catch(error){
+        throw error
+    }
+}
