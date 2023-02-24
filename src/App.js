@@ -7,14 +7,14 @@ const App = () => {
     const [token, setToken] = useState('')
     const navigate = useNavigate()
     useEffect(() => {
-        // if(!token) {
-        //     navigate('/loginRegister')
-        // }
+        if(!token) {
+            navigate('/loginRegister')
+        }
     }, [token])
     return (
         <>
         <Routes>
-        <Route path='/loginRegister' element={<RegLog />}/>
+        <Route path='/loginRegister' element={<RegLog setToken={setToken}/>}/>
         </Routes>
         
         <div>

@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-
 import Bitter from '../images/Bitter.png'
-
-const RegLog = () => {
+import { addUser, loginUser } from "../api";
+import { useNavigate } from "react-router-dom";
+const RegLog = ({setToken}) => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -13,12 +14,17 @@ const RegLog = () => {
     const [errorMessage, setErroMessage] = useState('')
     const handleRegister = async(e) => {
         e.preventDefault()
+        await addUser({ firstName, lastName, username, password, email })
         setErroMessage("The username or password you entered is incorrect!")
+        setPassword('')
+        setAction('login')
     }
     const handleLogin = async(e) => {
         e.preventDefault()
+        const token = await loginUser(email, password)
+        setToken(token.token)
+        navigate('/')
         setErroMessage("The username or password you entered is incorrect!")
-        console.log(email, password)
     }
     return (
         <div className="regLogPage">
@@ -37,14 +43,14 @@ const RegLog = () => {
                     
                     {action == 'register' ? 
                     <>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username..."></input>
-                    <input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Firstname..."></input>
-                    <input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Lastname..."></input>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password..."></input>
-                    <input value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="Confirm Password..."></input>
+                    <input value={username} required onChange={(e) => setUsername(e.target.value)} placeholder="Username..."></input>
+                    <input value={firstName} required onChange={(e) => setFirstName(e.target.value)} placeholder="Firstname..."></input>
+                    <input value={lastName} required onChange={(e) => setLastName(e.target.value)} placeholder="Lastname..."></input>
+                    <input value={password} required type='password' onChange={(e) => setPassword(e.target.value)} placeholder="Password..."></input>
+                    <input value={password2} required type='password' onChange={(e) => setPassword2(e.target.value)} placeholder="Confirm Password..."></input>
                     </>
                     : 
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password..."></input>
+                    <input value={password} required type='password' onChange={(e) => setPassword(e.target.value)} placeholder="Password..."></input>
                     }
                     {action == 'register'?
                     <button onClick={handleRegister} className="reglogButton">Create Account</button>
