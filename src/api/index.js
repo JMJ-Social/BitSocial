@@ -31,3 +31,46 @@ export async function addPost(postToBeCreated){
         throw error
     }
 }
+export async function addUser(userInfo){
+    const { firstName, lastName, username, password, email} = userInfo
+    const phone = 1234
+    try{
+        const response = await fetch(`${REACT_APP_BASE_URL}/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                username,
+                password,
+                email,
+                phone
+            })
+        })
+        const result = await response.json()
+        return result;
+    }catch(error){
+        console.error('Error in sending request to create user')
+        throw error
+    }
+}
+export async function loginUser(username, password){
+    try{
+        const response  = await fetch(`${REACT_APP_BASE_URL}/users/login`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        })
+        const result = await response.json()
+        return result
+    }catch(error){
+        throw error
+    }
+}
