@@ -20,5 +20,15 @@ postsRouter.post('/', async (req, res, next) => {
         throw error;
     }
 })
+// fetch posts for just one user
+postsRouter.get(`/${userId}`, async (req, res, next) => {
+    try {
+        const { userId } = req.params;
+        const posts = await fetchPostsOneUser(userId);
+        res.send(posts);
+    } catch (error) {
+        throw error;
+    }
+})
 
 module.exports = postsRouter;

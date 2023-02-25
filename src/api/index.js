@@ -34,11 +34,11 @@ export async function addPost(postToBeCreated){
 
 export const fetchUserPosts = async (userId) => {
     try {
-        const response = await fetch(`${REACT_APP_BASE_URL}/api/:userId/posts`, {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/posts/:${userId}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
-            },
+            }
         });
         const userPosts = await response.json();
         return userPosts;
@@ -80,9 +80,9 @@ export const fetchUserFollowers = async (userId) => {
 export const fetchUserProfilePage = async (userId) => {
     try {
         const userPosts = await fetchUserPosts(userId);
-        // const userMessages = await fetchUserMessages(userId);
-        // const userFollowers = await fetchUserFollowers(userId);
-        return userPosts;
+        const userMessages = await fetchUserMessages(userId);
+        const userFollowers = await fetchUserFollowers(userId);
+        return {userPosts, userMessages, userFollowers};
     } catch (error) {
         throw error;
     }

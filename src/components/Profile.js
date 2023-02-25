@@ -6,18 +6,19 @@ const Profile = () => {
 
     // what will the route be? /users/:userId?
     // /:userId/home?
+    
+    // const userId = useParams();
 
     const [posts, setUserPosts] = useState([]);
     const [messages, setMessages] = useState([]);
     const [followers, setFollowers] = useState([]);
 
-    // const userId = useParams();
     const fetchUser = async (userId) => {
-        const user = await fetchUserProfilePage()
-        await setUserPosts(user.userPosts);
-        // await setMessages(user.userMessages)
-        // await setFollowers(user.userMessages);
-    }
+        const user = await fetchUserProfilePage(userId)
+        setUserPosts(user.userPosts);
+        setMessages(user.userMessages)
+        setFollowers(user.userFollowers);
+    };
 
     useEffect(() => {
         fetchUser();

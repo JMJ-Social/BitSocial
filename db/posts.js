@@ -30,7 +30,20 @@ const getAllPosts = async () => {
         throw error
     }
 }
+const fetchPostsOneUser = async (userId) => {
+    try {
+        const {rows: userPosts} = await client.query(`
+        SELECT * FROM posts
+        WHERE post_author_id = $1
+        ;
+        `, [userId]);
+        return userPosts;
+    } catch (error) {
+        throw error;
+    }
+}
 module.exports = {
     createPost,
-    getAllPosts
+    getAllPosts,
+    fetchPostsOneUser,
 }
