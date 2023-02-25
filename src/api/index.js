@@ -31,3 +31,59 @@ export async function addPost(postToBeCreated){
         throw error
     }
 }
+
+export const fetchUserPosts = async (userId) => {
+    try {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/:userId/posts`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        const userPosts = await response.json();
+        return userPosts;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const fetchUserMessages = async(userId) => {
+    try {
+        const response = await fetch(`${REACT_APP_BASE_URL}/api/:${userId}/messages`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const messages = await response.json();
+        return messages;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const fetchUserFollowers = async (userId) => {
+    try {
+        const result = await fetch(`${REACT_APP_BASE_URL}/api/:${userId}/followers`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const followers = await result.json();
+        return followers;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const fetchUserProfilePage = async (userId) => {
+    try {
+        const userPosts = await fetchUserPosts(userId);
+        // const userMessages = await fetchUserMessages(userId);
+        // const userFollowers = await fetchUserFollowers(userId);
+        return userPosts;
+    } catch (error) {
+        throw error;
+    }
+}
