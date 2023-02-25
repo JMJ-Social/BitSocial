@@ -1,18 +1,32 @@
 import { NavLink } from "react-router-dom"
 
-const NavBar = () => {
+const NavBar = ({token}) => {
 
     return (
         <nav>
+            {token ?
+            <>
             <NavLink className='nav-link' to='/'>
-                Home
+            Home
             </NavLink>
             <NavLink className='nav-link' to='/messages'>
-                Messages
+            Messages
             </NavLink>
             <NavLink className='nav-link' to='/profile'>
-                Profile
+            Profile
             </NavLink>
+            </>
+            :
+            <>
+            <NavLink className='nav-link' to='/'>
+            Home
+            </NavLink>
+            <NavLink className='nav-link' to='/loginRegister'>
+            Login
+            </NavLink>
+            </>
+            }
+            
         </nav>
     )
 }
